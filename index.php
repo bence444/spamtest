@@ -2,11 +2,20 @@
     <?php
         include_once "classes/MailSender.php";
 
-        if (isset($_GET["email"]) && isset($_GET["message"]) && isset($_GET["subject"])) {
+        if (isset($_GET["email"]) && isset($_GET["message"]) && isset($_GET["subject"]) && isset($_GET["count"])) {
+            $sent = 0;
             $mailSender = new MailSender();
 
-            $Result = $mailSender->SendMail($_GET["email"], $_GET["subject"], $_GET["message"], isset($_GET["html"]));
-            echo $Result;
+            for ($i = 0; $i < $_GET["count"]; $i++) {
+                $result = $mailSender->SendMail($_GET["email"], $_GET["subject"], $_GET["message"], isset($_GET["html"]));
+            
+                if ($result == "Sent")
+                    $sent = $sent + 1;
+                else
+                    echo "Error at email $i:" . $result;
+            }
+
+            echo "Sent $sent messages";
         }
     ?>
 
