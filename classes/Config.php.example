@@ -1,0 +1,11 @@
+<?php
+    $Host = "";   // smtp kiszolgáló
+    $Port = 465;
+    $SMTPSecure = "ssl";
+    $SMPTAuth = true;
+    $Username = ""; // email a belépéshez
+    $Password = "";
+    $CharSet = "UTF-8"; // ne basztasd
+    $From = ""; // megegyezik a username-el
+    $FromName = "";   // email címhez adott név
+?>
